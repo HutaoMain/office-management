@@ -1,0 +1,47 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.App {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+}
+
+.app-sidebar {
+  width: 250px;
+}
+
+.App-container {
+  flex: 1;
+}
+
+/* custom style for react modal */
+
+.ReactModal__Overlay {
+  opacity: 0;
+  animation: animatebottom 0.4s;
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+}
+
+@keyframes animatebottom {
+  from {
+    bottom: -300px;
+    opacity: 0;
+  }
+
+  to {
+    bottom: 0;
+    opacity: 1;
+  }
+}

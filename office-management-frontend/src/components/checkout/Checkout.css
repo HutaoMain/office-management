@@ -1,0 +1,39 @@
+.checkout {
+  width: 330px;
+}
+
+.checkout-image {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+}
+
+.checkout-product-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.checkout-product {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-align: center;
+}
+
+.checkout-product label {
+  border: 1px solid black;
+  width: 100px;
+  height: 100px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.checkout-btn {
+  cursor: pointer;
+}
