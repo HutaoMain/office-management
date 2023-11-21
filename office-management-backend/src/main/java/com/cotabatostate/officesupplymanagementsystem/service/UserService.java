@@ -23,7 +23,7 @@ public class UserService {
         if (userByEmail == null) {
             user.setPassword(encodedPassword);
             userRepository.save(user);
-        }else{
+        } else {
             log.warn("user is already registered");
         }
         return user;
@@ -55,5 +55,9 @@ public class UserService {
         setUser.setPassword(encodedPassword);
         userRepository.save(setUser);
         return setUser;
+    }
+
+    public void deleteUserById(Long id) {
+        userRepository.deleteById(id);
     }
 }

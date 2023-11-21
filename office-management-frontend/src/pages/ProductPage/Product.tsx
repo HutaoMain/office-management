@@ -11,7 +11,7 @@ import {
   DialogContent,
 } from "@mui/material";
 import axios from "axios";
-import { ChangeEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { ProductInterface, UserInterface } from "../../Types";
 import moment from "moment";
@@ -19,8 +19,8 @@ import { Add, Search } from "@mui/icons-material";
 import useAuthStore from "../../zustand/AuthStore";
 import "./Product.css";
 import AddProduct from "../../components/ProductComponents/addProduct/AddProduct";
-import { BarcodeDetector } from "barcode-detector";
 import ViewProduct from "../../components/ProductComponents/ViewProduct/ViewProduct";
+import BarcodeReader from "../../components/barcodeReader/BarcodeReader";
 
 const Product = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -49,23 +49,6 @@ const Product = () => {
     };
     fetchData();
   }, []);
-
-  const handleImageChange = async (event: ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-
-    console.log(file);
-
-    if (file) {
-      const barcodeDetector: BarcodeDetector = new BarcodeDetector({
-        formats: ["code_128"],
-      });
-
-      const res = await barcodeDetector.detect(file);
-
-      console.log("barcode result: ", res?.[0].rawValue);
-      setBarcodeData(res?.[0].rawValue);
-    }
-  };
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
@@ -111,16 +94,9 @@ const Product = () => {
             Add Product <Add />
           </button>
         )}
-        <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-          <span style={{ fontWeight: "bold" }}>Add barcode here</span>
-          <input
-            type="file"
-            accept="image/*"
-            onChange={(e) => handleImageChange(e)}
-          />
-        </div>
       </div>
       <TableContainer>
+        <BarcodeReader setBarcodeData={setBarcodeData} />
         <Table>
           <TableHead sx={{ backgroundColor: "#003580", color: "white" }}>
             <TableRow>

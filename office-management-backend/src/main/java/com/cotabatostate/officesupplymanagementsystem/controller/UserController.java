@@ -50,4 +50,10 @@ public class UserController {
         return ResponseEntity.ok(updatedUser);
     }
 
+    @DeleteMapping("/delete/{id}")
+    private ResponseEntity<String> deleteUserById(@PathVariable("id") Long id) {
+        userService.deleteUserById(id);
+        return ResponseEntity.ok("deleted product ID: " + id);
+    }
+
 }

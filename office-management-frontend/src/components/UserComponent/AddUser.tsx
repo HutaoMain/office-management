@@ -80,7 +80,8 @@ const AddUser = ({ toggleNewUser }: any) => {
           onChange={handleOnChangeEvent}
         />
       </div>
-      <div className="addproduct-item-list" style={{ width: "100%" }}>
+      <div className="addproduct-item-list" style={{ width: "98%" }}>
+        <label>User Role</label>
         <select
           className="addproduct-input"
           name="userRole"
@@ -89,7 +90,7 @@ const AddUser = ({ toggleNewUser }: any) => {
         >
           <option value="">Select role</option>
           <option value="admin">Admin</option>
-          <option value="supplier">Supplier</option>
+          <option value="user">User</option>
         </select>
       </div>
       <div className="addproduct-item-list" style={{ width: "100%" }}>
